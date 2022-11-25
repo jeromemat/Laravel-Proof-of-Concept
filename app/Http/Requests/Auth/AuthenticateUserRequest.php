@@ -41,7 +41,7 @@ class AuthenticateUserRequest extends FormRequest
     public function authenticate(): JsonResponse
     {                
         if (! auth()->attempt($this->only('email', 'password'), $this->boolean('remember'))) {            
-            return response()->json(['message' => 'Incorrect Details. Please try again'], Response::HTTP_UNAUTHORIZED);
+            throw new  HttpResponseException(response()->json(['message' => 'Incorrect Details. Please try again'], Response::HTTP_UNAUTHORIZED));
         }
 
         $token = auth()->user()->createToken('My Token')->accessToken;
