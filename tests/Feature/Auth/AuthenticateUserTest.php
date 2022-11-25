@@ -38,7 +38,7 @@ test('users can authenticate using the login screen', function () {
     // Then
     $response->assertStatus(200);
         
-});
+})->group('auth')->skip("Not yet implemented");
 
 test('users can not authenticate with invalid creds', function () {
     // Given
@@ -92,4 +92,4 @@ test('users can not authenticate with invalid input format', function () {
     
     // Then
     $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
-});
+})->group('auth');
